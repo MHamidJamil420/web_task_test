@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="script.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+
+            <!-- Icon -->
+            <!-- <div class="fadeIn first">
+                <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+            </div> -->
+
+            <!-- Login Form -->
+            <input type="text" id="firstName" class="fadeIn second" name="login" placeholder="First Name">
+            <input type="text" id="lastName" class="fadeIn third" name="login" placeholder="Last Name">
+
+            <input type="submit" class="fadeIn fourth" onclick="stringMethods()" value="Log In">
+            <!-- <div class="custom-select" style="width:200px;"> -->
+            <select id="mySelect" class="form-select" aria-label="Default select example">
+                <option selected>Select Class</option>
+                <option>BCS</option>
+                <option>BSC</option>
+
+            </select>
+
+
+            <div id="container"></div>
+            <br>
+            <div>
+                <button id="addcourse" onclick="addCourse()">ADD</button>
+            </div>
+
+
+            <!-- </div> -->
+            <!-- </form> -->
+            <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+
+        </div>
+    </div>
+    <script>
+      
+        // window.onload = function () {
+        //     var form = document.querySelector("form");
+        //     form.onsubmit = stringMethods().bind(form);
+        // }
+
+        // function submitted(event) {
+        //     event.preventDefault();
+        // }
+
+        function stringMethods() {
+            // alert('In Function')
+            let F_name = document.getElementById("firstName").value;
+            let L_name = document.getElementById("lastName").value;
+            let output;
+
+            if (F_name == L_name) {
+                output = 'first name cannot be equal to last name';
+                alert(output);
+            }
+
+        }
+        document.getElementById('mySelect').onchange = function () {
+            // if (variable_ == 1) {
+                let index = document.getElementById('mySelect').selectedIndex;
+
+                if (index == 1) {
+                    var values = ["Java", "Cpp", "ICT", "ML"];
+                }
+                else if (index == 2) {
+                    var values = ["OS", "AI", "web Technology", "DIP"];
+                }
+                var select = document.createElement("select");
+                select.name = "Subject";
+                select.id = "Subject"
+
+                for (const val of values) {
+                    var option = document.createElement("option");
+                    option.value = val;
+                    option.text = val.charAt(0).toUpperCase() + val.slice(1);
+                    select.appendChild(option);
+                }
+
+                var label = document.createElement("label");
+                label.innerHTML = "Choose your Subject: "
+                label.htmlFor = "Subject";
+
+                document.getElementById("container").appendChild(label).appendChild(select);
+                variable_ = variable_ + 1;
+            // }
+        }
+        function addCourse() {
+            alert("course Added");
+        }
+
+    </script>
+</body>
+
+</html>
