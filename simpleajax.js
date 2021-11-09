@@ -118,8 +118,10 @@ function handleDelete(e) {
 window.onload = function () {
   //do all bindings here
   var btn = document.getElementById("mySelect");
+  var done_btn = document.getElementById("addcourse");
   //   btn.onclick = doBinding_1();
   btn.onclick = doBinding_2();
+  done_btn = addCourse();
 };
 // code from lecture 9
 // $(function() {
