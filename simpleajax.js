@@ -7,7 +7,50 @@ $(function () {
   });
 });
 var variable_ = 1;
-function doBindings() {
+function doBinding_2() {
+  document.getElementById("mySelect").onchange = function () {
+    if (variable_ == 1) {
+        document.getElementById("b1").innerHTML = "Click to Add";
+        document.getElementById("b2").innerHTML = "Added";
+    }
+    let index = document.getElementById("mySelect").selectedIndex;
+
+    if (index == 1 && variable_ == 1) {
+      //   var values = ["Java", "Cpp", "ICT", "ML"];
+      $("#courses_to_be_added").append("<li id=firstRow >" + "Java" + "</li>");
+      $("#courses_to_be_added").append("<li id=secondRow>" + "CPP" + "</li>");
+      $("#courses_to_be_added").append("<li id=thirdRow>" + "ICT" + "</li>");
+      $("#courses_to_be_added").append("<li id=fourthRow >" + "ML" + "</li>");
+      variable_++;
+    } else if (index == 2 && variable_ == 1) {
+      //   var values = ["OS", "AI", "web Technology", "DIP"];
+      $("#courses_to_be_added").append("<li id=firstRow >" + "OS" + "</li>");
+      $("#courses_to_be_added").append("<li id=secondRow>" + "AI" + "</li>");
+      $("#courses_to_be_added").append("<li id=thirdRow>" + "DAA" + "</li>");
+      $("#courses_to_be_added").append("<li id=fourthRow >" + "DIP" + "</li>");
+      variable_++;
+    } else if (index == 1 && variable_ > 1) {
+      document.getElementById("firstRow").innerHTML = "JAVA";
+      document.getElementById("secondRow").innerHTML = "CPP";
+      document.getElementById("thirdRow").innerHTML = "ICT";
+      document.getElementById("fourthRow").innerHTML = "ML";
+    } else if (index == 2 && variable_ > 1) {
+      document.getElementById("firstRow").innerHTML = "OS";
+      document.getElementById("secondRow").innerHTML = "AI";
+      document.getElementById("thirdRow").innerHTML = "DAA";
+      document.getElementById("fourthRow").innerHTML = "DIP";
+    }
+    // }
+    // var newTodo = document.getElementById("newToDo").value;
+    // var todos = document.getElementById("todos");
+    // var newTodoText = document.createTextNode(newTodo);
+    // var newLi = document.createElement("li");
+    // newLi.appendChild(newTodoText);
+    // todos.appendChild(newLi);
+  };
+}
+
+function doBinding_1() {
   document.getElementById("mySelect").onchange = function () {
     // if (variable_ == 1) {
     let index = document.getElementById("mySelect").selectedIndex;
@@ -37,12 +80,15 @@ function doBindings() {
         .appendChild(label)
         .appendChild(select);
     } else if (variable_ >= 2) {
-        // document.getElementById("container").appendChild(label).appendChild(select);
-        document.getElementById("container").removeChild(label).removeChild(select);
-        document
-          .getElementById("container")
-          .appendChild(label)
-          .appendChild(select);
+      // document.getElementById("container").appendChild(label).appendChild(select);
+      document
+        .getElementById("container")
+        .removeChild(label)
+        .removeChild(select);
+      document
+        .getElementById("container")
+        .appendChild(label)
+        .appendChild(select);
     }
     variable_ = variable_ + 1;
     // }
@@ -62,8 +108,48 @@ function stringMethods() {
     alert(output);
   }
 }
+function handleDelete(e) {
+  var tag = e.target;
+  var li = tag.parentNode;
+  li.parentNode.removeChild(li);
+}
 window.onload = function () {
   //do all bindings here
   var btn = document.getElementById("mySelect");
-  btn.onclick = doBindings();
+  //   btn.onclick = doBinding_1();
+  btn.onclick = doBinding_2();
 };
+// code from lecture 9
+// $(function() {
+//     //jq eill execute this function after page load
+//     // so do your bindings here
+//     // $("#addButton").click(manage_courses);
+//     $("#mySelect").click(manage_courses);
+//     //   $("#todos li").click(removeMe);
+//     $("#todos").on("click", "li", removeMe);
+//   });
+//   function manage_courses() {
+//     var index = $("#index").val();
+//     if (index == 1) {
+//         // var values = ["Java", "Cpp", "ICT", "ML"];
+//         $("#courses_to_be_added").append("<li>" + "Java" + "</li>");
+//         $("#courses_to_be_added").append("<li>" + "CPP" + "</li>");
+//         $("#courses_to_be_added").append("<li>" + "ICT" + "</li>");
+//         $("#courses_to_be_added").append("<li>" + 'ML' + "</li>");
+//     } else if (index == 2) {
+//         // var values = ["OS", "AI", "web Technology", "DIP"];
+//         $("#courses_added").append("<li>" + "OS" + "</li>");
+//         $("#courses_added").append("<li>" + "AI" + "</li>");
+//         $("#courses_added").append("<li>" + "web tech" + "</li>");
+//         $("#courses_added").append("<li>" + "DIP" + "</li>");
+//       }
+//     // $("#newTodo").removeClass("error");
+//     // $("#newTodo").val("");
+//     // $("#todos").append("<li>" + newTodo + "</li>");
+//     //   $("#todos li").click(removeMe);
+//   }
+
+//   function removeMe() {
+//     $(this).fadeOut();
+//     // .remove();
+//   }
