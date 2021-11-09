@@ -2,9 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="script.css">
     <title>Document</title>
     <script src="./jquery-3.4.1.min.js"></script>
@@ -37,12 +35,16 @@
                 <option selected>Select Class</option>
                 <option>BCS</option>
                 <option>BSC</option>
-
             </select>
 
 
-            <div id="container"></div>
-            <br>
+            <div id="container">
+                <!-- <select id="mySelect" class="form-select" aria-label="Default select example">
+                    <option selected>Select Class</option>
+                </select> -->
+            </div>
+            <!-- <br> -->
+
             <div>
                 <button id="addcourse" onclick="addCourse()">ADD</button>
             </div>
@@ -57,63 +59,7 @@
 
         </div>
     </div>
-    <script>
-      
-        // window.onload = function () {
-        //     var form = document.querySelector("form");
-        //     form.onsubmit = stringMethods().bind(form);
-        // }
 
-        // function submitted(event) {
-        //     event.preventDefault();
-        // }
-
-        function stringMethods() {
-            // alert('In Function')
-            let F_name = document.getElementById("firstName").value;
-            let L_name = document.getElementById("lastName").value;
-            let output;
-
-            if (F_name == L_name) {
-                output = 'first name cannot be equal to last name';
-                alert(output);
-            }
-
-        }
-        document.getElementById('mySelect').onchange = function () {
-            // if (variable_ == 1) {
-                let index = document.getElementById('mySelect').selectedIndex;
-
-                if (index == 1) {
-                    var values = ["Java", "Cpp", "ICT", "ML"];
-                }
-                else if (index == 2) {
-                    var values = ["OS", "AI", "web Technology", "DIP"];
-                }
-                var select = document.createElement("select");
-                select.name = "Subject";
-                select.id = "Subject"
-
-                for (const val of values) {
-                    var option = document.createElement("option");
-                    option.value = val;
-                    option.text = val.charAt(0).toUpperCase() + val.slice(1);
-                    select.appendChild(option);
-                }
-
-                var label = document.createElement("label");
-                label.innerHTML = "Choose your Subject: "
-                label.htmlFor = "Subject";
-
-                document.getElementById("container").appendChild(label).appendChild(select);
-                variable_ = variable_ + 1;
-            // }
-        }
-        function addCourse() {
-            alert("course Added");
-        }
-
-    </script>
 </body>
 
 </html>
