@@ -8,10 +8,12 @@ $(function () {
 });
 var variable_ = 1;
 function doBinding_2() {
+  //   $("#courses_added").on("click", "li", add_and_remove);
+  $("#courses_to_be_added").on("click", "li", add_and_remove);
   document.getElementById("mySelect").onchange = function () {
     if (variable_ == 1) {
-        document.getElementById("b1").innerHTML = "Click to Add";
-        document.getElementById("b2").innerHTML = "Added";
+      document.getElementById("b1").innerHTML = "Click to Add";
+      document.getElementById("b2").innerHTML = "Added";
     }
     let index = document.getElementById("mySelect").selectedIndex;
 
@@ -125,8 +127,8 @@ window.onload = function () {
 //     // so do your bindings here
 //     // $("#addButton").click(manage_courses);
 //     $("#mySelect").click(manage_courses);
-//     //   $("#todos li").click(removeMe);
-//     $("#todos").on("click", "li", removeMe);
+//     //   $("#todos li").click(add_and_remove);
+//     $("#todos").on("click", "li", add_and_remove);
 //   });
 //   function manage_courses() {
 //     var index = $("#index").val();
@@ -146,10 +148,20 @@ window.onload = function () {
 //     // $("#newTodo").removeClass("error");
 //     // $("#newTodo").val("");
 //     // $("#todos").append("<li>" + newTodo + "</li>");
-//     //   $("#todos li").click(removeMe);
+//     //   $("#todos li").click(add_and_remove);
 //   }
+var target_string = 1;
+let str1 = "identity_";
+function add_and_remove() {
+  let number_to_str = target_string.toString();
+  let indexer = str1.concat(number_to_str);
+  let targetedID = $(this).attr("id");
+  console.log(targetedID);
+  let course = document.getElementById(targetedID).innerHTML;
+  console.log(course);
 
-//   function removeMe() {
-//     $(this).fadeOut();
-//     // .remove();
-//   }
+  $("#courses_added").append("<li id= indexer >" + course + "</li>");
+  $(this).fadeOut();
+  target_string++;
+  // .remove();
+}
