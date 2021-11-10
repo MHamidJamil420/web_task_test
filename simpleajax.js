@@ -1,11 +1,25 @@
-$(function () {
-  $("#load").click(function () {
-    $.get("students.txt", function (response) {
-      $("#result").empty();
-      $("#result").append(response);
-    });
-  });
-});
+let courses_from_file;
+// $(function() {
+//   $("#addcourse").click(function () {
+//     $.get("students.txt", function (response) {
+//       $("#result").empty();
+//       $("#result").append(response);
+//       // if (index == 1) {
+//       //   $.get("CS.txt", function (response) {
+//       //     courses_from_file = response;
+//       //     $("#result").empty();
+//       //     $("#result").append(response);
+//       //   });
+//       // } else if (index == 2) {
+//       //   $.get("SC.txt", function (response) {
+//       //     courses_from_file = response;
+//       //     $("#result").empty();
+//       //     $("#result").append(response);
+//       //   });
+//       // }
+//     });
+//   });
+// });
 var variable_ = 1;
 function doBinding_2() {
   //   $("#courses_added").on("click", "li", add_and_remove);
@@ -16,32 +30,30 @@ function doBinding_2() {
       document.getElementById("b2").innerHTML = "Added";
     }
     let index = document.getElementById("mySelect").selectedIndex;
+    // grabing courses from file
+    // sleep(2000);
+    // if (index == 1) {
+    //   $.get("CS.txt", function (response) {
+    //     courses_from_file = response;
+    //     $("#result").empty();
+    //     $("#result").append(response);
+    //     // sleep(500);
+    //   });
+    // } else if (index == 2) {
+    //   $.get("SC.txt", function (response) {
+    //     courses_from_file = response;
+    //     $("#result").empty();
+    //     $("#result").append(response);
+    //     // sleep(500);
+    //   });
+    // }
+    // sleep(2000);
+    // getcourse(index);
+    // console.log(courses_from_file);
+    // console.log(document.getElementById("result").innerHTML);
 
-    if (index == 1 && variable_ == 1) {
-      //   var values = ["Java", "Cpp", "ICT", "ML"];
-      $("#courses_to_be_added").append("<li id=firstRow >" + "Java" + "</li>");
-      $("#courses_to_be_added").append("<li id=secondRow>" + "CPP" + "</li>");
-      $("#courses_to_be_added").append("<li id=thirdRow>" + "ICT" + "</li>");
-      $("#courses_to_be_added").append("<li id=fourthRow >" + "ML" + "</li>");
-      variable_++;
-    } else if (index == 2 && variable_ == 1) {
-      //   var values = ["OS", "AI", "web Technology", "DIP"];
-      $("#courses_to_be_added").append("<li id=firstRow >" + "OS" + "</li>");
-      $("#courses_to_be_added").append("<li id=secondRow>" + "AI" + "</li>");
-      $("#courses_to_be_added").append("<li id=thirdRow>" + "DAA" + "</li>");
-      $("#courses_to_be_added").append("<li id=fourthRow >" + "DIP" + "</li>");
-      variable_++;
-    } else if (index == 1 && variable_ > 1) {
-      document.getElementById("firstRow").innerHTML = "JAVA";
-      document.getElementById("secondRow").innerHTML = "CPP";
-      document.getElementById("thirdRow").innerHTML = "ICT";
-      document.getElementById("fourthRow").innerHTML = "ML";
-    } else if (index == 2 && variable_ > 1) {
-      document.getElementById("firstRow").innerHTML = "OS";
-      document.getElementById("secondRow").innerHTML = "AI";
-      document.getElementById("thirdRow").innerHTML = "DAA";
-      document.getElementById("fourthRow").innerHTML = "DIP";
-    }
+    //courses will be grabed in a String
+    assignCourses(index);
     // }
     // var newTodo = document.getElementById("newToDo").value;
     // var todos = document.getElementById("todos");
@@ -51,7 +63,57 @@ function doBinding_2() {
     // todos.appendChild(newLi);
   };
 }
-
+function assignCourses(index) {
+  if (index == 1 && variable_ == 1) {
+    //   var values = ["Java", "Cpp", "ICT", "ML"];
+    // console.log(document.getElementById("result").innerHTML);
+    $.get("CS.txt", function (response) {
+      console.log(response);
+      $("#courses_to_be_added").append("<li id=firstRow >" + "Java" + "</li>");
+      $("#courses_to_be_added").append("<li id=secondRow>" + "CPP" + "</li>");
+      $("#courses_to_be_added").append("<li id=thirdRow>" + "ICT" + "</li>");
+      $("#courses_to_be_added").append("<li id=fourthRow >" + "ML" + "</li>");
+      variable_++;
+    });
+  } else if (index == 2 && variable_ == 1) {
+    //   var values = ["OS", "AI", "web Technology", "DIP"];
+    // console.log(document.getElementById("result").innerHTML);
+    $.get("SC.txt", function (response) {
+      console.log(response);
+      $("#courses_to_be_added").append("<li id=firstRow >" + "OS" + "</li>");
+      $("#courses_to_be_added").append("<li id=secondRow>" + "AI" + "</li>");
+      $("#courses_to_be_added").append("<li id=thirdRow>" + "DAA" + "</li>");
+      $("#courses_to_be_added").append("<li id=fourthRow >" + "DIP" + "</li>");
+      variable_++;
+    });
+  } else if (index == 1 && variable_ > 1) {
+    // console.log(document.getElementById("result").innerHTML);
+    $.get("CS.txt", function (response) {
+      console.log(response);
+      document.getElementById("firstRow").innerHTML = "JAVA";
+      document.getElementById("secondRow").innerHTML = "CPP";
+      document.getElementById("thirdRow").innerHTML = "ICT";
+      document.getElementById("fourthRow").innerHTML = "ML";
+    });
+  } else if (index == 2 && variable_ > 1) {
+    // console.log(document.getElementById("result").innerHTML);
+    $.get("SC.txt", function (response) {
+      console.log(response);
+      document.getElementById("firstRow").innerHTML = "OS";
+      document.getElementById("secondRow").innerHTML = "AI";
+      document.getElementById("thirdRow").innerHTML = "DAA";
+      document.getElementById("fourthRow").innerHTML = "DIP";
+    });
+  }
+}
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if (new Date().getTime() - start > milliseconds) {
+      break;
+    }
+  }
+}
 function doBinding_1() {
   document.getElementById("mySelect").onchange = function () {
     // if (variable_ == 1) {
@@ -97,7 +159,7 @@ function doBinding_1() {
   };
 }
 function addCourse() {
-  alert("course Added");
+  // alert("course Added");
 }
 function stringMethods() {
   // alert('In Function')
