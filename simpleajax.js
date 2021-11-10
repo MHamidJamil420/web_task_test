@@ -229,3 +229,4 @@ function add_and_remove() {
   target_string++;
   // .remove();
 }
+function remove(){}
