@@ -105,7 +105,7 @@ function assignCourses(index) {
       $("#identity_3").fadeOut();
       $("#identity_4").fadeIn();
       $("#identity_4").fadeOut();
-      target_string=1;
+      target_string = 1;
 
       document.getElementById("firstRow").innerHTML = "JAVA";
       document.getElementById("secondRow").innerHTML = "CPP";
@@ -131,7 +131,7 @@ function assignCourses(index) {
       $("#identity_4").fadeIn();
       $("#identity_4").fadeOut();
 
-      target_string=1;
+      target_string = 1;
 
       document.getElementById("firstRow").innerHTML = "OS";
       document.getElementById("secondRow").innerHTML = "AI";
@@ -258,8 +258,12 @@ function add_and_remove() {
   console.log(targetedID);
   let course = document.getElementById(targetedID).innerHTML;
   console.log(course);
-// if()
-  $("#courses_added").append("<li id=" + indexer + ">" + course + "</li>");
+  // if()
+  let tempst = "#";
+  let tempStr = tempst.concat(indexer);
+  $(tempStr).fadeIn();
+  document.getElementById(indexer).innerHTML = course;
+  // $("#courses_added").append("<li id=" + indexer + ">" + course + "</li>");
 
   $(this).fadeOut();
   target_string++;
