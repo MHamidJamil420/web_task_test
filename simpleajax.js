@@ -84,12 +84,29 @@ function assignCourses(index) {
       $("#courses_to_be_added").append("<li id=secondRow>" + "AI" + "</li>");
       $("#courses_to_be_added").append("<li id=thirdRow>" + "DAA" + "</li>");
       $("#courses_to_be_added").append("<li id=fourthRow >" + "DIP" + "</li>");
+      // $("#courses_to_be_added").
       variable_++;
     });
   } else if (index == 1 && variable_ > 1) {
     // console.log(document.getElementById("result").innerHTML);
     $.get("CS.txt", function (response) {
       console.log(response);
+
+      $("#firstRow").fadeIn();
+      $("#secondRow").fadeIn();
+      $("#thirdRow").fadeIn();
+      $("#fourthRow").fadeIn();
+
+      $("#identity_1").fadeIn();
+      $("#identity_1").fadeOut();
+      $("#identity_2").fadeIn();
+      $("#identity_2").fadeOut();
+      $("#identity_3").fadeIn();
+      $("#identity_3").fadeOut();
+      $("#identity_4").fadeIn();
+      $("#identity_4").fadeOut();
+      target_string=1;
+
       document.getElementById("firstRow").innerHTML = "JAVA";
       document.getElementById("secondRow").innerHTML = "CPP";
       document.getElementById("thirdRow").innerHTML = "ICT";
@@ -99,6 +116,23 @@ function assignCourses(index) {
     // console.log(document.getElementById("result").innerHTML);
     $.get("SC.txt", function (response) {
       console.log(response);
+
+      $("#firstRow").fadeIn();
+      $("#secondRow").fadeIn();
+      $("#thirdRow").fadeIn();
+      $("#fourthRow").fadeIn();
+
+      $("#identity_1").fadeIn();
+      $("#identity_1").fadeOut();
+      $("#identity_2").fadeIn();
+      $("#identity_2").fadeOut();
+      $("#identity_3").fadeIn();
+      $("#identity_3").fadeOut();
+      $("#identity_4").fadeIn();
+      $("#identity_4").fadeOut();
+
+      target_string=1;
+
       document.getElementById("firstRow").innerHTML = "OS";
       document.getElementById("secondRow").innerHTML = "AI";
       document.getElementById("thirdRow").innerHTML = "DAA";
@@ -216,6 +250,7 @@ window.onload = function () {
 //   }
 var target_string = 1;
 let str1 = "identity_";
+
 function add_and_remove() {
   let number_to_str = target_string.toString();
   let indexer = str1.concat(number_to_str);
@@ -223,10 +258,11 @@ function add_and_remove() {
   console.log(targetedID);
   let course = document.getElementById(targetedID).innerHTML;
   console.log(course);
+// if()
+  $("#courses_added").append("<li id=" + indexer + ">" + course + "</li>");
 
-  $("#courses_added").append("<li id= indexer >" + course + "</li>");
   $(this).fadeOut();
   target_string++;
   // .remove();
 }
-function remove(){}
+function remove() {}
