@@ -1,9 +1,9 @@
 let courses_from_file;
 // $(function() {
-//   $("#addcourse").click(function () {
-//     $.get("students.txt", function (response) {
-//       $("#result").empty();
-//       $("#result").append(response);
+  // $("#addcourse").click(function () {
+  //   $.get("students.txt", function (response) {
+  //     $("#result").empty();
+  //     $("#result").append(response);
 //       // if (index == 1) {
 //       //   $.get("CS.txt", function (response) {
 //       //     courses_from_file = response;
@@ -67,14 +67,36 @@ function assignCourses(index) {
   if (index == 1 && variable_ == 1) {
     //   var values = ["Java", "Cpp", "ICT", "ML"];
     // console.log(document.getElementById("result").innerHTML);
-    $.get("CS.txt", function (response) {
-      console.log(response);
-      $("#courses_to_be_added").append("<li id=firstRow >" + "Java" + "</li>");
-      $("#courses_to_be_added").append("<li id=secondRow>" + "CPP" + "</li>");
-      $("#courses_to_be_added").append("<li id=thirdRow>" + "ICT" + "</li>");
-      $("#courses_to_be_added").append("<li id=fourthRow >" + "ML" + "</li>");
-      variable_++;
-    });
+    // $.get("CS.txt", function (response) {
+    //   console.log(response);
+    // fetch("http://localhost:8845/Projects/CS.txt")
+    //   .then((response) => {
+    //     console.log("BCS Data: ",response);
+    //     return response.text();
+    //   })
+    //   .then((text) => {
+    //     console.log(text);
+    //   });
+
+    // {
+    //   var xhttp = new XMLHttpRequest();
+    //   xhttp.open("GET", "http://localhost:8845/Projects/CS.txt");
+    //   xhttp.send();
+    //   var tempstrrr = this.responseText;
+    //   alert(this.responseText);
+    //   console.log(tempstrrr);
+    // }
+
+    $.get('http://localhost:8845/Projects/test.txt').done(function(data) {
+      console.log(data)
+  });
+
+    $("#courses_to_be_added").append("<li id=firstRow >" + "Java" + "</li>");
+    $("#courses_to_be_added").append("<li id=secondRow>" + "CPP" + "</li>");
+    $("#courses_to_be_added").append("<li id=thirdRow>" + "ICT" + "</li>");
+    $("#courses_to_be_added").append("<li id=fourthRow >" + "ML" + "</li>");
+    variable_++;
+    // });
   } else if (index == 2 && variable_ == 1) {
     //   var values = ["OS", "AI", "web Technology", "DIP"];
     // console.log(document.getElementById("result").innerHTML);
@@ -87,7 +109,8 @@ function assignCourses(index) {
       // $("#courses_to_be_added").
       variable_++;
     });
-  } else if (index == 1 && variable_ > 1) {
+  } else 
+  if (index == 1 && variable_ > 1) {
     // console.log(document.getElementById("result").innerHTML);
     $.get("CS.txt", function (response) {
       console.log(response);
@@ -254,6 +277,9 @@ let str1 = "identity_";
 function add_and_remove() {
   let number_to_str = target_string.toString();
   let indexer = str1.concat(number_to_str);
+
+  identity_2
+
   let targetedID = $(this).attr("id");
   console.log(targetedID);
   let course = document.getElementById(targetedID).innerHTML;
@@ -261,6 +287,7 @@ function add_and_remove() {
   // if()
   let tempst = "#";
   let tempStr = tempst.concat(indexer);
+
   $(tempStr).fadeIn();
   document.getElementById(indexer).innerHTML = course;
   // $("#courses_added").append("<li id=" + indexer + ">" + course + "</li>");
